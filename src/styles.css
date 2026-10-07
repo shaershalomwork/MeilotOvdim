@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@import "tailwindcss-primeui";
+@import "primeicons/primeicons.css";
+
+@custom-variant dark (&:where(.app-dark, .app-dark *));
+
+iconify-icon { display: inline-block; width: 1em; height: 1em; }
