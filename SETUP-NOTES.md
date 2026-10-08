@@ -12,8 +12,10 @@ THEME_STORAGE_KEY in ThemeService. The root html element owns data-theme and app
 menus, selects and dialogs inherit the same theme as the page.
 Shared standalone UI components are in src/app/shared/ui; the common application shell is in
 src/app/shared/layout. See DESIGN-SYSTEM.md for usage and extension guidance.
-app.html is an RTL desktop demonstration with local, in-memory example employee data.
-Forms, component examples and theme menu load separately; confirmation dialogs load on demand.
+app.html contains only the RTL application shell and RouterOutlet; there are no demonstration
+screens or employee data. Routes are initially empty. AppShell accepts feature navigation as
+an input and displays its sidebar only when navigation items are provided.
+The header theme menu loads separately; shared confirmation dialogs load on demand.
 Iconify remains available for icons; check the license of each icon collection used.
 NgRx, Chart.js and date-fns are installed and ready for feature-specific imports.
 Angular Material, CDK and Tailwind use the MIT license: no paid license or license key is required.

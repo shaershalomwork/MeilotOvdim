@@ -12,7 +12,6 @@ to keep small text readable. The palette is an application proposal, not an offi
 | `src/app/core/theme/theme.service.ts` | Device preference, manual choice and browser persistence                         |
 | `src/app/shared/layout/app-shell/`    | Shared navigation and header                                                     |
 | `src/app/shared/ui/`                  | Cards, summaries, badges, page headings, search, pagination, notices and dialogs |
-| `src/app/demo/`                       | Demo-specific employee data, form and component examples                         |
 
 ## Styling a new feature
 
@@ -27,7 +26,7 @@ Material classes or use `::ng-deep`.
 Import the standalone components a feature needs:
 
 ```html
-<app-card title="פרטי עובד" subtitle="פרטי קשר ותפקיד">
+<app-card title="פרטים" subtitle="מידע נוסף">
   <app-status-badge card-actions tone="success">פעיל</app-status-badge>
   <!-- Feature-specific content -->
 </app-card>
@@ -54,13 +53,27 @@ The theme is applied to `html`, including overlays attached outside the applicat
 share the storage key and root selectors. Account/device synchronization can later be added
 inside ThemeService without changing feature components.
 
-## Demo scope and validation
+## Application shell and navigation
 
-The home screen has summary cards, an employee table with combined search/status filtering,
-pagination, department bars, an employee form, tabs, status examples, notices and confirmations.
-Employee edits reset on reload; only the theme persists. No backend calls are made by the demo.
-CSV export includes the current filtered list, UTF-8 BOM, escaping and spreadsheet-formula protection.
+The root component contains only AppShell and RouterOutlet. The routes list is initially empty,
+so the main content area is reserved for real application screens. No example data, forms,
+tables or business actions are loaded.
+
+AppShell has no feature-specific navigation. Supply its `navigation` input with
+`ShellNavigationItem[]` from the application when routes are added. Each item defines a
+`path`, `label`, `icon` and optional `exact` flag (defaults to true). RouterLinkActive tracks
+the current URL and sets aria-current on the selected link. The sidebar is hidden when the
+navigation list is empty.
+
+The shell accepts `appTitle`, `brandSubtitle` and `pageTitle`. Additional header controls can
+be projected with the `header-actions` attribute. There is no placeholder user profile.
+
+Shared UI components remain available for future feature screens. Import only the components
+a feature uses; the root does not render component examples.
+
+## Validation
 
 `npm run build` checks production compilation and existing size budgets.
-`npm run test:ci` checks theme persistence/device changes, table interactions, form validation,
-duplicate email rejection and confirmation behavior. The application supports Hebrew RTL.
+`npm run test:ci` checks the empty shell, route rendering, configurable navigation,
+header theme selection, theme persistence/device changes and shared confirmation behavior.
+The application supports Hebrew RTL.
