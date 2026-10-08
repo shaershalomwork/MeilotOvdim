@@ -1,0 +1,55 @@
+<a class="skip-link" href="#main-content">דילוג לתוכן הראשי</a>
+<aside class="sidebar" aria-label="סרגל צד">
+  <a
+    class="brand"
+    href="#overview"
+    (click)="activeSection.set('overview')"
+    aria-label="מרחב עובדים — למסך הראשי"
+  >
+    <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span><strong>מרחב עובדים</strong><small>מזרחי טפחות</small></span>
+  </a>
+  <div class="sidebar-label">מרחב העבודה</div>
+  <nav aria-label="ניווט ראשי">
+    @for (item of navigation; track item.id) {
+      <a
+        [href]="'#' + item.id"
+        [class.active]="activeSection() === item.id"
+        [attr.aria-current]="activeSection() === item.id ? 'location' : null"
+        (click)="activeSection.set(item.id)"
+      >
+        <app-icon [name]="item.icon" /><span>{{ item.label }}</span>
+        @if (item.id === 'employees') {
+          <span class="nav-count">{{ employeeCount() }}</span>
+        }
+      </a>
+    }
+  </nav>
+  <div class="sidebar-bottom">
+    <span class="workspace-indicator"><span></span>סביבת הדגמה</span>
+    <p>מרחב אחד. כל מה שצריך לעבודה.</p>
+  </div>
+</aside>
+<div class="workspace">
+  <header class="app-header">
+    <div class="header-context">
+      <app-icon name="grid" /><span>מרחב העבודה</span><span class="header-divider"></span
+      ><span class="muted">{{ currentSection() }}</span>
+    </div>
+    <div class="header-actions">
+      @defer (on immediate) {
+        <app-theme-picker />
+      } @placeholder {
+        <button mat-stroked-button type="button" disabled>מצב תצוגה</button>
+      } @error {
+        <span>בחירת התצוגה לא נטענה. יש לרענן את המסך.</span>
+      }
+      <span class="header-divider"></span>
+      <div class="profile">
+        <span class="profile-avatar"><app-icon name="user" /></span
+        ><span><strong>משתמש לדוגמה</strong><small>מנהל מערכת</small></span>
+      </div>
+    </div>
+  </header>
+  <ng-content />
+</div>

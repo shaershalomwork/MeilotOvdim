@@ -1,0 +1,31 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: var(--app-radius-pill);
+  background: var(--app-neutral-soft);
+  color: var(--app-neutral);
+  font-size: var(--app-text-xs);
+  font-weight: 500;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+:host([data-tone='success']) {
+  color: var(--app-success);
+  background: var(--app-success-soft);
+}
+:host([data-tone='warning']) {
+  color: var(--app-warning);
+  background: var(--app-warning-soft);
+}
+:host([data-tone='danger']) {
+  color: var(--app-danger);
+  background: var(--app-danger-soft);
+}

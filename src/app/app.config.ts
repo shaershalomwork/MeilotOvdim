@@ -1,24 +1,21 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import {
+  ApplicationConfig,
+  inject,
+  provideAppInitializer,
+  provideBrowserGlobalErrorListeners,
+} from '@angular/core';
 import { provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
-import { providePrimeNG } from 'primeng/config';
-import Aura from '@primeuix/themes/aura';
 import { routes } from './app.routes';
+import { ThemeService } from './core/theme/theme.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(),
+    provideAppInitializer(() => {
+      inject(ThemeService);
+    }),
     provideRouter(routes),
-    providePrimeNG({
-      // Supply a PrimeUI license appropriate for your usage before deployment.
-      theme: {
-        preset: Aura,
-        options: {
-          darkModeSelector: '.app-dark',
-          cssLayer: { name: 'primeng', order: 'theme, base, primeng, utilities' }
-        }
-      }
-    })
-  ]
+  ],
 };

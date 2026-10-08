@@ -1,0 +1,99 @@
+@use '@angular/material' as mat;
+
+// The only source of Material colors. Neutral surfaces keep orange as an accent.
+html {
+  color-scheme: light dark;
+
+  @include mat.theme(
+    (
+      color: mat.$orange-palette,
+      typography: (
+        'Segoe UI',
+        Arial,
+        sans-serif,
+      ),
+      density: -1,
+    ),
+    $overrides: (
+      primary: light-dark(#b74c0b, #ffb277),
+      on-primary: light-dark(#ffffff, #482000),
+      primary-container: light-dark(#fff0e4, #3a291e),
+      on-primary-container: light-dark(#95410d, #ffc79d),
+      secondary: light-dark(#5d626b, #bfc3cb),
+      on-secondary: light-dark(#ffffff, #2b3038),
+      secondary-container: light-dark(#eef0f3, #30353d),
+      on-secondary-container: light-dark(#414751, #e3e6ec),
+      background: light-dark(#f5f6f8, #15171b),
+      on-background: light-dark(#272b33, #edf0f4),
+      surface: light-dark(#ffffff, #202329),
+      on-surface: light-dark(#272b33, #edf0f4),
+      surface-dim: light-dark(#eef0f3, #15171b),
+      surface-bright: light-dark(#ffffff, #343942),
+      surface-container-lowest: light-dark(#ffffff, #181b20),
+      surface-container-low: light-dark(#fafbfc, #242830),
+      surface-container: light-dark(#f1f3f5, #292d35),
+      surface-container-high: light-dark(#e9ecf0, #30353e),
+      surface-container-highest: light-dark(#e2e6eb, #393f49),
+      surface-variant: light-dark(#f1f3f5, #292d35),
+      on-surface-variant: light-dark(#646b77, #adb4c0),
+      outline: light-dark(#858c97, #818b9b),
+      outline-variant: light-dark(#e5e8ed, #373d47),
+      inverse-surface: light-dark(#30353e, #e9ecf0),
+      inverse-on-surface: light-dark(#edf0f4, #272b33),
+      inverse-primary: light-dark(#ffb277, #b74c0b),
+      error: light-dark(#b42332, #ffa3ab),
+      on-error: light-dark(#ffffff, #5b1520),
+      error-container: light-dark(#fff0f1, #3c252b),
+      on-error-container: light-dark(#a42635, #ffb2b9)
+    )
+  );
+
+  // Public Material override APIs; no dependency on private component selectors.
+  @include mat.button-overrides(
+    (
+      filled-container-shape: var(--app-radius-control),
+      outlined-container-shape: var(--app-radius-control),
+      text-container-shape: var(--app-radius-control),
+      outlined-label-text-color: var(--app-text),
+      outlined-outline-color: var(--app-border-strong),
+      text-label-text-color: var(--app-text-muted),
+      filled-label-text-weight: 600,
+      outlined-label-text-weight: 600,
+    )
+  );
+  @include mat.form-field-overrides(
+    (
+      outlined-container-shape: var(--app-radius-control),
+      outlined-outline-color: var(--app-border-strong),
+    )
+  );
+  @include mat.dialog-overrides(
+    (
+      container-shape: var(--app-radius-card),
+    )
+  );
+  @include mat.table-overrides(
+    (
+      background-color: var(--app-surface),
+      row-item-outline-color: var(--app-border),
+      header-headline-color: var(--app-text-muted),
+      header-headline-weight: 500,
+    )
+  );
+}
+
+html[data-theme='light'] {
+  color-scheme: light;
+}
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+.app-danger-action {
+  @include mat.button-overrides(
+    (
+      filled-container-color: var(--app-danger),
+      filled-label-text-color: var(--mat-sys-on-error),
+    )
+  );
+}

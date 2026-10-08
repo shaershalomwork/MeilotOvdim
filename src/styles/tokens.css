@@ -1,0 +1,43 @@
+/* Application tokens. Shared components and Tailwind consume these same values. */
+:root {
+  --app-font: 'Segoe UI', Arial, sans-serif;
+  --app-canvas: var(--mat-sys-background);
+  --app-surface: var(--mat-sys-surface);
+  --app-surface-muted: var(--mat-sys-surface-container-low);
+  --app-surface-hover: var(--mat-sys-surface-container);
+  --app-text: var(--mat-sys-on-surface);
+  --app-text-muted: var(--mat-sys-on-surface-variant);
+  --app-border: var(--mat-sys-outline-variant);
+  --app-border-strong: light-dark(#d3d8e0, #4d5664);
+  --app-primary: var(--mat-sys-primary);
+  --app-on-primary: var(--mat-sys-on-primary);
+  --app-primary-soft: var(--mat-sys-primary-container);
+  --app-on-primary-soft: var(--mat-sys-on-primary-container);
+  --app-brand: #f58220;
+  --app-success: light-dark(#20714a, #86d7ac);
+  --app-success-soft: light-dark(#edf7f1, #23372d);
+  --app-warning: light-dark(#8a6110, #efcc7e);
+  --app-warning-soft: light-dark(#fbf5e7, #383222);
+  --app-danger: var(--mat-sys-error);
+  --app-danger-soft: var(--mat-sys-error-container);
+  --app-neutral: var(--mat-sys-on-secondary-container);
+  --app-neutral-soft: var(--mat-sys-secondary-container);
+  --app-chart-track: var(--mat-sys-surface-container);
+  --app-chart-muted: light-dark(#a8adb7, #717b8c);
+  --app-radius-control: 8px;
+  --app-radius-card: 14px;
+  --app-radius-pill: 999px;
+  --app-space-1: 4px;
+  --app-space-2: 8px;
+  --app-space-3: 12px;
+  --app-space-4: 16px;
+  --app-space-5: 20px;
+  --app-space-6: 24px;
+  --app-space-8: 32px;
+  --app-text-xs: 12px;
+  --app-text-sm: 13px;
+  --app-text-md: 14px;
+  --app-text-lg: 16px;
+  --app-shadow-color: light-dark(#27304004, #00000014);
+  --app-shadow-card: 0 2px 8px var(--app-shadow-color);
+}

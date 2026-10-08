@@ -1,7 +1,76 @@
-@import "tailwindcss";
-@import "tailwindcss-primeui";
-@import "primeicons/primeicons.css";
+@import 'tailwindcss';
+@import './styles/tokens.css';
 
 @custom-variant dark (&:where(.app-dark, .app-dark *));
 
-iconify-icon { display: inline-block; width: 1em; height: 1em; }
+@theme inline {
+  --color-canvas: var(--app-canvas);
+  --color-surface: var(--app-surface);
+  --color-surface-muted: var(--app-surface-muted);
+  --color-content: var(--app-text);
+  --color-content-muted: var(--app-text-muted);
+  --color-primary: var(--app-primary);
+  --color-on-primary: var(--app-on-primary);
+  --color-outline: var(--app-border);
+  --radius-card: var(--app-radius-card);
+  --font-sans: var(--app-font);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+  }
+
+  body {
+    margin: 0;
+    min-width: 1000px;
+    font-family: var(--app-font);
+    font-size: var(--app-text-md);
+    line-height: 1.5;
+    background: var(--app-canvas);
+    color: var(--app-text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+  button:not(:disabled),
+  select {
+    cursor: pointer;
+  }
+  a {
+    color: inherit;
+  }
+  :focus-visible {
+    outline: 2px solid var(--app-primary);
+    outline-offset: 4px;
+  }
+  ::selection {
+    background: var(--app-primary-soft);
+    color: var(--app-text);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+iconify-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}
